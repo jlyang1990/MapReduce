@@ -1,16 +1,29 @@
-class Solution(object):
-    def findMin(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # binary search
-        first = 0
-        last = len(nums) - 1
-        while first < last:
-            mid = (first+last)/2
-            if nums[mid] < nums[last]:
-                last = mid
-            else:
-                first = mid + 1
-        return nums[first]
+#!/usr/bin/python
+
+import sys
+
+nodeNum = 0
+nodeID = []
+oldKey = None
+
+for line in sys.stdin:
+    data_mapped = line.strip().split("\t")
+    if len(data_mapped) != 2:
+        # Something has gone wrong. Skip this line.
+        continue
+
+    thisKey, thisVal = data_mapped
+
+    if oldKey and oldKey != thisKey:
+        print "{0}\t{1}\t{2}".format(oldKey, nodeNum, nodeID)
+        oldKey = thisKey
+	nodeNum = 0
+        nodeID = []
+
+    oldKey = thisKey
+    nodeNum += 1
+    nodeID.append(thisVal)
+
+if oldKey != None:
+    print "{0}\t{1}\t{2}".format(oldKey, nodeNum, nodeID)
+

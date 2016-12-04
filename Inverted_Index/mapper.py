@@ -1,13 +1,14 @@
-class Solution(object):
-    def maxSubArray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        # dynamic programming
-        # maxSubArray = max(maxSubArray(endwithindex0), maxSubArray(endwithindex1), ..., maxSubArray(endwithindex(n-1)))
-        maxsum = [None] * len(nums)
-        maxsum[0] = nums[0]
-        for i in range(1, len(nums)):
-            maxsum[i] = max(maxsum[i-1], 0) + nums[i]
-        return max(maxsum)
+#!/usr/bin/python
+
+import sys
+import csv
+import re
+
+reader = csv.reader(sys.stdin, delimiter = '\t')
+
+for line in reader:
+    if len(line) == 19:
+        words = re.compile('[a-zA-Z]+').findall(re.sub('<[^>]*>', '', line[4].lower()))
+        for word in words:
+	    print "{0}\t{1}".format(word, line[0])
+
