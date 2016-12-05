@@ -1,12 +1,15 @@
 #!/usr/bin/python
 
 """
-In this exercise your task is to write a mapreduce program that for each forum thread (that is a question node with all it's answers and comments) would give us a list of students that have posted there - either asked the question, answered a question or added a comment. If a student posted to that thread several times, they should be added to that list several times as well, to indicate intensity of communication.
+In this exercise your task is to write a mapreduce program that for each forum thread (that is a question node with all it's answers and comments) 
+would give us a list of students that have posted there - either asked the question, answered a question or added a comment. 
+If a student posted to that thread several times, they should be added to that list several times as well, to indicate intensity of communication.
 """
 
 """
 column names of forum_node.tsv are:
-id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
+id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, 
+last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
 
 The ones that are the most relevant to the task are:
 

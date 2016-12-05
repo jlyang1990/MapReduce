@@ -1,12 +1,14 @@
 #!/usr/bin/python
 
 """
-Write a mapreduce program that would process the forum_node data and output the length of the post and the average answer (just answer, not comment) length for each post. You will have to decide how to write both the mapper and the reducer to get the required result.
+Write a mapreduce program that would process the forum_node data and output the length of the post and the average answer (just answer, 
+not comment) length for each post. You will have to decide how to write both the mapper and the reducer to get the required result.
 """
 
 """
 column names of forum_node.tsv are:
-id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
+id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, 
+last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
 
 The ones that are the most relevant to the task are:
 

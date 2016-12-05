@@ -6,7 +6,8 @@ Write a mapreduce program that would output Top 10 tags, ordered by the number o
 
 """
 column names of forum_node.tsv are:
-id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
+id, title, tagnames, author_id, body, node_type, parent_id, abs_parent_id, added_at, score, state_string, 
+last_edited_id, last_activity_by_id, last_activity_at, active_revision_id, extra, extra_ref_id, extra_count, marked
 
 The ones that are the most relevant to the task are:
 
