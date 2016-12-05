@@ -1,9 +1,7 @@
 #!/usr/bin/python
 
 """
-Write a MapReduce program that creates an index of all words that can be found in the body of a forum post and node id they can be found in.
-
-Do not parse the HTML. Just split the text on all whitespace as well as the following characters: .,!?:;"()<>[]#$=-/
+Write a mapreduce program that would process the forum_node data and output the length of the post and the average answer (just answer, not comment) length for each post. You will have to decide how to write both the mapper and the reducer to get the required result.
 """
 
 """
@@ -25,13 +23,13 @@ The ones that are the most relevant to the task are:
 
 import sys
 import csv
-import re
 
 reader = csv.reader(sys.stdin, delimiter = '\t')
 
 for line in reader:
     if len(line) == 19 and line[0] != "id":
-        words = re.compile('[a-zA-Z]+').findall(re.sub('<[^>]*>', '', line[4].lower()))
-        for word in words:
-	    print "{0}\t{1}".format(word, line[0])
+	if line[5] == "question":
+	    print "{0}\t{1}\t{2}".format(line[0], len(line[4]), 0)
+	elif line[5] == "answer":
+	    print "{0}\t{1}\t{2}".format(line[6], 0, len(line[4]))
 

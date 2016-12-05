@@ -1,9 +1,7 @@
 #!/usr/bin/python
 
 """
-Write a MapReduce program that creates an index of all words that can be found in the body of a forum post and node id they can be found in.
-
-Do not parse the HTML. Just split the text on all whitespace as well as the following characters: .,!?:;"()<>[]#$=-/
+In this exercise your task is to write a mapreduce program that for each forum thread (that is a question node with all it's answers and comments) would give us a list of students that have posted there - either asked the question, answered a question or added a comment. If a student posted to that thread several times, they should be added to that list several times as well, to indicate intensity of communication.
 """
 
 """
@@ -25,13 +23,13 @@ The ones that are the most relevant to the task are:
 
 import sys
 import csv
-import re
 
 reader = csv.reader(sys.stdin, delimiter = '\t')
 
 for line in reader:
     if len(line) == 19 and line[0] != "id":
-        words = re.compile('[a-zA-Z]+').findall(re.sub('<[^>]*>', '', line[4].lower()))
-        for word in words:
-	    print "{0}\t{1}".format(word, line[0])
+	if line[5] == "question":
+	    print "{0}\t{1}".format(line[0], line[3])
+	else:
+	    print "{0}\t{1}".format(line[6], line[3])
 
